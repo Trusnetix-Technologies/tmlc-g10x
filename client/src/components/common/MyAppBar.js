@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useState } from "react";
 
 // MUI Imports
 import AppBar from "@mui/material/AppBar";
@@ -8,13 +9,17 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import { ThemeProvider } from "@mui/material";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 import { darkTheme, theme } from "@/styles/mui/theme";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 
 export default function MyAppBar() {
+  const [currentTheme, setCurrentTheme] = useState("dark");
+
   return (
     <>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={currentTheme === "dark" ? darkTheme : theme}>
+        <CssBaseline />
         <Box sx={{ flexGrow: 1 }}>
           <AppBar position="static" color="primary">
             <Toolbar>
@@ -30,6 +35,18 @@ export default function MyAppBar() {
               <Typography variant="h6" component="Box" sx={{ flexGrow: 1 }}>
                 News
               </Typography>
+              <IconButton
+                size="large"
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                sx={{ mr: 2 }}
+                onClick={() =>
+                  setCurrentTheme(currentTheme === "dark" ? "light" : "dark")
+                }
+              >
+                <DarkModeIcon />
+              </IconButton>
               <Link href="/blog">
                 <Button color="inherit">Blog</Button>
               </Link>
