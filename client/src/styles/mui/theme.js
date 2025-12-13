@@ -15,11 +15,12 @@ const secondaryColourDark = "#3c4469ff";
 const highlightColourDark = "#EC058E";
 
 // Theme
-let theme = createTheme({
+let lightTheme = createTheme({
   palette: {
     mode: "light",
     background: {
       default: backgroundColour,
+      paper: backgroundColour
     },
     primary: {
       main: primaryColour,
@@ -37,7 +38,27 @@ let theme = createTheme({
       main: "#D80027",
     },
   },
-  
+  typography: {
+    h1: {
+      fontFamily: 'Montserrat',
+    },
+    fontFamily: 'Montserrat',
+    body1: {
+      fontFamily: 'Raleway',
+    },
+    body2: {
+      fontFamily: 'Raleway',
+    },
+    subtitle1: {
+      fontFamily: 'Raleway',
+    },
+    subtitle2: {
+      fontFamily: 'Raleway',
+    },
+    button: {
+      fontWeight: 500,
+    },
+  },
 });
 
 // Dark Theme
@@ -64,6 +85,27 @@ let darkTheme = createTheme({
       main: "#D80027",
     },
   },
+  typography: {
+    h1: {
+      fontFamily: 'Montserrat',
+    },
+    fontFamily: 'Montserrat',
+    body1: {
+      fontFamily: 'Raleway',
+    },
+    body2: {
+      fontFamily: 'Raleway',
+    },
+    subtitle1: {
+      fontFamily: 'Raleway',
+    },
+    subtitle2: {
+      fontFamily: 'Raleway',
+    },
+    button: {
+      fontWeight: 500,
+    },
+  },
 });
 
-export { theme, darkTheme };
+export { lightTheme, darkTheme };

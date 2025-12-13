@@ -2,15 +2,32 @@ import Head from "next/head";
 import { useState } from "react"; //React Hook for State
 import Link from "next/link";
 
-import { Box, Button, CssBaseline, ThemeProvider } from "@mui/material";
+// Material
+import {
+  Box,
+  Button,
+  Container,
+  CssBaseline,
+  Grid,
+  ThemeProvider,
+} from "@mui/material";
+import { useTheme } from "@mui/material";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
 
 import MyAppBar from "@/components/common/MyAppBar";
 
-import { theme, darkTheme } from "@/styles/mui/theme";
+import { lightTheme, darkTheme } from "@/styles/mui/theme";
+import { MyCard } from "@/styles/mui/customComponents";
 
 export default function Home() {
   const [visible, setVisible] = useState(false); // Always call hooks at the top of the function.
   const [currentTheme, setCurrentTheme] = useState("light");
+
+  const theme = useTheme();
 
   const movies = [
     {
@@ -42,7 +59,7 @@ export default function Home() {
 
   return (
     <>
-      <ThemeProvider theme={currentTheme === "dark" ? darkTheme : theme}>
+      <ThemeProvider theme={currentTheme === "dark" ? darkTheme : lightTheme}>
         <CssBaseline />
         <Head>
           <title>The Movie Lovers Club | Your Favourite Movie Articles!</title>
@@ -55,15 +72,72 @@ export default function Home() {
           setCurrentTheme={setCurrentTheme}
         />
         <Box>
-          <Button onClick={() => setVisible(!visible)}>Toggle</Button>
+          <Container>
+            <Button onClick={() => setVisible(!visible)}>Toggle</Button>
 
-          <Box height="20px" />
+            <Box height="20px" />
 
-          {visible ? (
-            <Box height="200px" sx={{ background: "pink", width: "500px" }} />
-          ) : (
-            <></>
-          )}
+            {visible ? (
+              <Box height="200px" sx={{ background: "pink", width: "500px" }} />
+            ) : (
+              <></>
+            )}
+
+            <Grid container spacing={2} direction="row" justifyContent="center">
+              <Grid size={4}>
+                <MyCard sx={{ maxWidth: 345 }}>
+                  <CardMedia
+                    sx={{ height: 140 }}
+                    image="https://images.unsplash.com/photo-1761839256545-4268b03606c0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    title="green iguana"
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                      Not Lizard
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      sx={{ color: "text.secondary" }}
+                    >
+                      Lizards are a widespread group of squamate reptiles, with
+                      over 6,000 species, ranging across all continents except
+                      Antarctica
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button size="small">Share</Button>
+                    <Button size="small">Learn More</Button>
+                  </CardActions>
+                </MyCard>
+              </Grid>
+              <Grid size={4}>
+                <Card sx={{ maxWidth: 345 }}>
+                  <CardMedia
+                    sx={{ height: 140 }}
+                    image="https://images.unsplash.com/photo-1761839256545-4268b03606c0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    title="green iguana"
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                      Not Lizard
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      sx={{ color: "text.secondary" }}
+                    >
+                      Lizards are a widespread group of squamate reptiles, with
+                      over 6,000 species, ranging across all continents except
+                      Antarctica
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Button size="small">Share</Button>
+                    <Button size="small">Learn More</Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+            </Grid>
+          </Container>
         </Box>
       </ThemeProvider>
     </>
