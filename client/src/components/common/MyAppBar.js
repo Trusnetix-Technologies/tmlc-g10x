@@ -16,10 +16,14 @@ import { useTheme } from "@mui/material";
 // Icons
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
+import { useDispatch, useSelector } from "react-redux";
+import { selectTheme, toggleTheme } from "@/redux/reducers/themeReducer";
 
 // import { darkTheme, theme } from "@/styles/mui/theme";
 
-export default function MyAppBar(props) {
+export default function MyAppBar() {
+  const dispatch = useDispatch();
+  const currentTheme = useSelector(selectTheme).activeTheme;
   const theme = useTheme();
 
   // const [currentTheme, setCurrentTheme] = useState("dark");
@@ -49,17 +53,9 @@ export default function MyAppBar(props) {
               color="inherit"
               aria-label="menu"
               sx={{ mr: 2 }}
-              onClick={() =>
-                props.setCurrentTheme(
-                  props.currentTheme === "dark" ? "light" : "dark"
-                )
-              }
+              onClick={() => dispatch(toggleTheme())}
             >
-              {props.currentTheme === "dark" ? (
-                <LightModeIcon />
-              ) : (
-                <DarkModeIcon />
-              )}
+              {currentTheme === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
             </IconButton>
             <Link href="/blog">
               <Button sx={{ color: theme.palette.icon.main }}>Blog</Button>

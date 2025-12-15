@@ -16,9 +16,16 @@ import MyAppBar from "@/components/common/MyAppBar";
 import { lightTheme, darkTheme } from "@/styles/mui/theme";
 import { CustomCard, MyCard } from "@/styles/mui/customComponents";
 
+// Redux
+import { useSelector, useDispatch } from "react-redux";
+import { selectTheme, getActiveTheme } from "@/redux/reducers/themeReducer";
+
 export default function Home() {
+const dispatch = useDispatch();
+const currentTheme = useSelector(selectTheme).activeTheme;
+
   // const [visible, setVisible] = useState(false); // Always call hooks at the top of the function.
-  const [currentTheme, setCurrentTheme] = useState("light");
+  // const [currentTheme, setCurrentTheme] = useState("light");
 
   const theme = useTheme();
 
@@ -60,10 +67,7 @@ export default function Home() {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <MyAppBar
-          currentTheme={currentTheme}
-          setCurrentTheme={setCurrentTheme}
-        />
+        <MyAppBar />
         <Box height="25px" />
         <Box>
           <Container>
