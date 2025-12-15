@@ -69,7 +69,7 @@ export default function Home() {
           <Container>
             <Grid container spacing={2} direction="row" justifyContent="center">
               {movies ? movies.map((movie) => (
-                <Grid size={4}>
+                <Grid size={{ xl: 4, md: 4, xs: 12 }}>
                   <CustomCard name={movie.name} image={movie.img} description={movie.desc} />
                 </Grid>
               )) : <></>}
