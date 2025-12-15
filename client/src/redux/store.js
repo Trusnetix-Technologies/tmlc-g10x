@@ -6,6 +6,7 @@
 // Step 5: Add Reducer Slice to Store
 // Step 6: Make sure Provider is wrapping around the entire App(using _app.js)
 // Step 7: Call State using useDispatch
+// Step 8: Select Reducer Slice using useSelector
 
 import { configureStore } from "@reduxjs/toolkit";
 
