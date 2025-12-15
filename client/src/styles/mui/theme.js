@@ -1,4 +1,4 @@
-const { createTheme } = require("@mui/material/styles");
+const { createTheme, responsiveFontSizes } = require("@mui/material/styles");
 
 // Colour Variables
 const backgroundColour = "#F3F8F2";
@@ -107,5 +107,8 @@ let darkTheme = createTheme({
     },
   },
 });
+
+lightTheme = responsiveFontSizes(lightTheme);
+darkTheme = responsiveFontSizes(darkTheme);
 
 export { lightTheme, darkTheme };
