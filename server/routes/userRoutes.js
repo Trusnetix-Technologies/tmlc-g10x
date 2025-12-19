@@ -32,7 +32,7 @@ module.exports = (app) => {
       const user = await Users.findOne({ email });
 
       if (!user) {
-        return res.status(400).json({ message: "User doesn't exists" });
+        return res.status(400).json({ message: "User doesn't exist" });
       }
 
       res.status(201).json({ message: "Here is the user: ", user });
