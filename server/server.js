@@ -24,6 +24,7 @@ require("./models/User");
 // Routes
 require("./routes/movieRoutes")(app); // To Learn CRUD Oprations
 require("./routes/userRoutes")(app); // To Learn CRUD Oprations
+require("./routes/authRoutes")(app); // Authentication BackEnd
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
