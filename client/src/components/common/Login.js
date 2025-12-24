@@ -6,13 +6,13 @@ import { Cookies } from "react-cookie";
 const cookies = new Cookies();
 
 const Login = () => {
-  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
   const [showOtp, setShowOtp] = useState(false);
 
   const sendOtp = async () => {
-    console.log(phone);
-    const response = await axios.post("/api/v1/send/otp/number", { phone });
+    console.log(email);
+    const response = await axios.post("/api/v1/send/otp/email", { email });
     console.log(response.data);
     if (response.status === 201) {
       setShowOtp(true);
@@ -20,14 +20,14 @@ const Login = () => {
   };
 
   const verifyOtp = async () => {
-    const response = await axios.post("/api/v1/verify/otp/number", {
-      phone,
+    const response = await axios.post("/api/v1/verify/otp/email", {
+      email,
       otp,
     });
     console.log(response.data);
     if (response.status === 200) {
       setShowOtp(false);
-      console.log("response.data.token:", response.data.token);
+    //   console.log("response.data.token:", response.data.token);
       cookies.set("token", response.data.token);
       //   cookies.set("user", JSON.stringify(response.data.user));
       window.location.href = "/";
@@ -56,11 +56,11 @@ const Login = () => {
           ) : (
             <>
               <TextField
-                label="Phone Number"
+                label="Email"
                 onChange={(event) => {
-                  setPhone(event.target.value);
+                  setEmail(event.target.value);
                 }}
-                value={phone}
+                value={email}
               />
               <Button variant="contained" onClick={sendOtp} hidden="true">
                 Send OTP
