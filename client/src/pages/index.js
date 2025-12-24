@@ -25,6 +25,8 @@ export default function Home() {
   const dispatch = useDispatch();
   const currentTheme = useSelector(selectTheme).activeTheme;
 
+  const [movies, setMovies] = useState(null);
+
   useEffect(() => {
     dispatch(getActiveTheme()); // To get theme from Cookie
     fetchData();
@@ -37,9 +39,11 @@ export default function Home() {
 
   const fetchData = async () => {
     try {
-      const response = axios.get("/api/v1/get/movies");
-      console.log(response);
+      const response = await axios.get("/api/v1/get/movies");
+      console.log("response: ", response.data);
       console.log("HAHAHAHA")
+
+      setMovies(response.data)
 
     } catch (error) {
       
@@ -63,8 +67,8 @@ export default function Home() {
         <Box>
           <Container>
             <Grid container spacing={2} direction="row" justifyContent="center">
-              {/* {movies ? (
-                movies.map((movie) => (
+              {movies ? (
+                movies.response.map((movie) => (
                   <Grid size={{ xl: 4, md: 4, xs: 12 }}>
                     <CustomCard
                       name={movie.name}
@@ -75,7 +79,7 @@ export default function Home() {
                 ))
               ) : (
                 <></>
-              )} */}
+              )}
             </Grid>
           </Container>
           {/* <Button onClick={() => setVisible(!visible)}>Toggle</Button>
