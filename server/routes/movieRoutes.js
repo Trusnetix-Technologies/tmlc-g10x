@@ -52,7 +52,7 @@ module.exports = (app) => {
   // Update Movie Info
   app.put("/api/v1/update/movie/:id", async (req, res) => {
     const { id } = req.params;
-    const { name, phone } = req.body;
+    const { name, image, description } = req.body;
     try {
       const response = await Movie.updateOne({ _id: id }, { name, phone });
       res.status(200).json({ message: "User updated successfully", response });
