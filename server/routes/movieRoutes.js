@@ -13,11 +13,13 @@ module.exports = (app) => {
       if (movie) {
         return res.status(400).json({ message: "Movie already exists" });
       }
+
       movieFields = {
         name,
         description,
         image,
       };
+
       const response = await Movie.create(movieFields);
       res.status(201).json({ message: "Movie added successfully", response });
     } catch (error) {
@@ -53,8 +55,9 @@ module.exports = (app) => {
   app.put("/api/v1/update/movie/:id", async (req, res) => {
     const { id } = req.params;
     const { name, image, description } = req.body;
+
     try {
-      const response = await Movie.updateOne({ _id: id }, { name, phone });
+      const response = await Movie.updateOne({ _id: id }, { name, image, description });
       res.status(200).json({ message: "User updated successfully", response });
     } catch (error) {
       console.log(error);
