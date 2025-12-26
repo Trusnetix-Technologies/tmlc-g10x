@@ -17,6 +17,6 @@ import { movieReducer } from "./reducers/movieReducer";
 export const store = configureStore({
   reducer: {
     activeTheme: themeReducer,
-    movird: movieReducer
+    moviesData: movieReducer
   },
 });
