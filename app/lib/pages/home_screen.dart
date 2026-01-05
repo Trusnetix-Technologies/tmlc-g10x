@@ -14,6 +14,7 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Colors.cyan,
         centerTitle: true,
       ),
+      
       body: Container(
         color: Colors.white54,
         width: width,
@@ -22,26 +23,7 @@ class HomeScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Container(height: 300, width: width * 0.85, color: Colors.pink),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Container(height: 300, width: width * 0.85, color: Colors.amber),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Container(height: 300, width: width * 0.85, color: Colors.blue),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Container(
-                  height: 300,
-                  width: width * 0.85,
-                  color: Colors.amberAccent,
-                ),
-              ),
+     
             ],
           ),
         ),
